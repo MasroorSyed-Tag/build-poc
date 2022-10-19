@@ -1,0 +1,81 @@
+{
+  "name": "apps-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/apps/ui/src",
+  "prefix": "ui",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/apps/ui",
+        "index": "apps/apps/ui/src/index.html",
+        "main": "apps/apps/ui/src/main.ts",
+        "polyfills": "apps/apps/ui/src/polyfills.ts",
+        "tsConfig": "apps/apps/ui/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/apps/ui/src/favicon.ico", "apps/apps/ui/src/assets"],
+        "styles": ["apps/apps/ui/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/apps/ui/src/environments/environment.ts",
+              "with": "apps/apps/ui/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "apps-ui:build:production"
+        },
+        "development": {
+          "browserTarget": "apps-ui:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "apps-ui:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/apps/ui/**/*.ts", "apps/apps/ui/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
