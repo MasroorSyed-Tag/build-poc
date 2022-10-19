@@ -34,5 +34,8 @@
       "default"
     ],
     "sharedGlobals": []
-  }
+  },
+  "plugins": [
+    "@nx-dotnet/core"
+  ]
 }

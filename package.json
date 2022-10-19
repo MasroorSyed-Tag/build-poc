@@ -5,15 +5,18 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "prepare": "nx g @nx-dotnet/core:restore"
   },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
-    "nx": "15.0.0",
+    "@nrwl/angular": "^15.0.0",
     "@nrwl/cli": "15.0.0",
+    "@nrwl/js": "15.0.0",
     "@nrwl/workspace": "15.0.0",
-    "typescript": "~4.8.2",
-    "prettier": "^2.6.2"
+    "@nx-dotnet/core": "^1.15.0",
+    "nx": "15.0.0",
+    "prettier": "^2.6.2",
+    "typescript": "~4.8.2"
   }
 }
